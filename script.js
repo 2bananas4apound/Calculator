@@ -2,7 +2,8 @@ let input = document.getElementsByClassName("display-screen")[0];
 let buttons = document.querySelectorAll("button");
 let string = "";
 let arr = Array.from(buttons);
-let greatest_key = 0;
+let greatest_key = 1;
+
 window.onload = () => {
   input.value = "";
   let history = document.getElementsByClassName("history")[0];
@@ -32,7 +33,7 @@ arr.forEach((button) => {
       let new_key= greatest_key + 1;
       historyDiv.innerHTML = `${new_key}` +":" + historyDiv.innerHTML + " = " + string;
       document.getElementsByClassName('history')[0].appendChild(historyDiv);
-      localStorage.setItem(new_key, JSON.stringify(expObj));      
+      localStorage.setItem(`${new_key}`, JSON.stringify(expObj));      
       input.value = string;
     } else if (e.target.innerHTML == "AC") {
       string = "";
