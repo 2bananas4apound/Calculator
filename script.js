@@ -16,7 +16,7 @@ window.onload = () => {
   keys.forEach((key) => {
     let expObj = JSON.parse(localStorage.getItem(key));
     let historyDiv = document.createElement("div");
-    historyDiv.innerHTML = `${key} : ${expObj.expression}`;
+    historyDiv.innerHTML = key + ":" + expObj.expression;
     history.appendChild(historyDiv);
   });
 };
