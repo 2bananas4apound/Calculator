@@ -2,7 +2,7 @@ let input = document.getElementsByClassName("display-screen")[0];
 let buttons = document.querySelectorAll("button");
 let string = "";
 let arr = Array.from(buttons);
-let greatest_key = 1;
+let greatest_key = 0;
 window.onload = () => {
   input.value = "";
   let history = document.getElementsByClassName("history")[0];
