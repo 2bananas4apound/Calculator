@@ -6,13 +6,17 @@ let arr = Array.from(buttons);
 window.onload = () => {
   input.value = "";
   let history = document.getElementsByClassName("history")[0];
-    for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
+  let keys = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    keys.push(localStorage.key(i));
+  }
+  keys.sort((a, b) => a - b);
+  keys.forEach((key) => {
     let expObj = JSON.parse(localStorage.getItem(key));
     let historyDiv = document.createElement("div");
-    historyDiv.innerHTML = `${key} :       ${expObj.expression}`;
+    historyDiv.innerHTML = `${key} : ${expObj.expression}`;
     history.appendChild(historyDiv);
-  }
+  });
 };
 arr.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -25,7 +29,7 @@ arr.forEach((button) => {
       string = eval(string);
       expObj.expression += " = " + string;
       let new_key= localStorage.length + 1; 
-      historyDiv.innerHTML = `${new_key}`+ ": " + historyDiv.innerHTML + " = " + string;
+      historyDiv.innerHTML = `${new_key}` +":" + historyDiv.innerHTML + " = " + string;
       document.getElementsByClassName('history')[0].appendChild(historyDiv);
       localStorage.setItem(new_key, JSON.stringify(expObj));      
       input.value = string;
